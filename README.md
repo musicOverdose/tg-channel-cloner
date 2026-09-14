@@ -27,6 +27,7 @@ Engineered specifically for one-click deployment via **Portainer Git Stacks** an
 - [Telegram API Limitations & Best Practices](#-telegram-api-limitations--best-practices)
 - [Troubleshooting](#-troubleshooting)
 - [Security](#-security)
+- [Author](#-author)
 - [License](#-license)
 
 ---
@@ -96,9 +97,9 @@ Whether you need a **one-time full history backup** or a **daily scheduled sync*
 Follow these steps to deploy directly from GitHub using Portainer:
 
 ### 1. Push to GitHub
-Fork or push this repository to your GitHub account (public or private):
+Fork or push this repository to your GitHub account (`MusicOverdose`):
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/telegram-channel-cloner.git
+git remote add origin https://github.com/MusicOverdose/telegram-channel-cloner.git
 git push -u origin main
 ```
 
@@ -111,7 +112,7 @@ git push -u origin main
 ### 3. Configure Stack via Git
 1. **Name**: `telegram-cloner`
 2. **Build method**: Select **Repository**.
-3. **Repository URL**: `https://github.com/YOUR_USERNAME/telegram-channel-cloner.git`
+3. **Repository URL**: `https://github.com/MusicOverdose/telegram-channel-cloner.git`
    *(If your repository is private, toggle "Authentication" and enter your GitHub username and a Personal Access Token).*
 4. **Repository reference**: `refs/heads/main`
 5. **Compose path**: `docker-compose.yml`
@@ -151,7 +152,7 @@ To deploy on any server using Docker Compose directly from terminal:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/telegram-channel-cloner.git
+git clone https://github.com/MusicOverdose/telegram-channel-cloner.git
 cd telegram-channel-cloner
 
 # 2. Create your .env file
@@ -342,6 +343,15 @@ asyncio.run(reset())
 
 ---
 
+## 👤 Author
+
+Created and maintained by **Farzad (MusicOverdose)**
+- GitHub: [@MusicOverdose](https://github.com/MusicOverdose)
+- Repository: [MusicOverdose/telegram-channel-cloner](https://github.com/MusicOverdose/telegram-channel-cloner)
+
+---
+
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
+
