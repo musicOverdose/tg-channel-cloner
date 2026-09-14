@@ -1,0 +1,30 @@
+services:
+  telegram-cloner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: telegram-channel-cloner:latest
+    container_name: telegram-channel-cloner
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8083}:8083"
+    environment:
+      - APP_PORT=8083
+      - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - SECRET_KEY=${SECRET_KEY:-change-this-default-secret-key-in-production}
+      - DATABASE_URL=${DATABASE_URL:-sqlite+aiosqlite:////data/cloner.db}
+      - MAX_CONCURRENT_JOBS=${MAX_CONCURRENT_JOBS:-10}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      - cloner_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8083/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  cloner_data:
+    name: telegram_cloner_data
