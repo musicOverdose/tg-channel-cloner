@@ -99,7 +99,7 @@ Follow these steps to deploy directly from GitHub using Portainer:
 ### 1. Push to GitHub
 Fork or push this repository to your GitHub account (`MusicOverdose`):
 ```bash
-git remote add origin https://github.com/MusicOverdose/telegram-channel-cloner.git
+git remote add origin https://github.com/MusicOverdose/tg-channel-cloner.git
 git push -u origin main
 ```
 
@@ -110,9 +110,9 @@ git push -u origin main
 4. Click **+ Add stack**.
 
 ### 3. Configure Stack via Git
-1. **Name**: `telegram-cloner`
+1. **Name**: `tg-channel-cloner`
 2. **Build method**: Select **Repository**.
-3. **Repository URL**: `https://github.com/MusicOverdose/telegram-channel-cloner.git`
+3. **Repository URL**: `https://github.com/MusicOverdose/tg-channel-cloner.git`
    *(If your repository is private, toggle "Authentication" and enter your GitHub username and a Personal Access Token).*
 4. **Repository reference**: `refs/heads/main`
 5. **Compose path**: `docker-compose.yml`
@@ -152,8 +152,8 @@ To deploy on any server using Docker Compose directly from terminal:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/MusicOverdose/telegram-channel-cloner.git
-cd telegram-channel-cloner
+git clone https://github.com/MusicOverdose/tg-channel-cloner.git
+cd tg-channel-cloner
 
 # 2. Create your .env file
 cp .env.example .env
@@ -247,7 +247,7 @@ All persistent state (jobs, schedules, bot tokens, execution history, logs) is s
 ### Backup via Host Terminal
 ```bash
 docker run --rm \
-  -v telegram_cloner_data:/data \
+  -v tg_cloner_data:/data \
   -v $(pwd):/backup \
   alpine cp /data/cloner.db /backup/cloner_backup.db
 ```
@@ -258,7 +258,7 @@ docker run --rm \
 3. Copy your backup file into the volume:
    ```bash
    docker run --rm \
-     -v telegram_cloner_data:/data \
+     -v tg_cloner_data:/data \
      -v $(pwd):/backup \
      alpine cp /backup/cloner_backup.db /data/cloner.db
    ```
@@ -270,7 +270,7 @@ docker run --rm \
 ## 🔄 Updating the Stack
 
 ### Via Portainer
-1. Go to **Stacks** ➔ select `telegram-cloner`.
+1. Go to **Stacks** ➔ select `tg-channel-cloner`.
 2. Click **Pull and redeploy**.
 3. Toggle **Re-pull image** and **Re-build image**.
 4. Click **Update**.
@@ -301,7 +301,7 @@ docker compose up -d --build
 ### Container is unhealthy
 Check application logs:
 ```bash
-docker compose logs -f telegram-cloner
+docker compose logs -f tg-channel-cloner
 ```
 Verify port `8083` is not already used by another service on your server.
 
@@ -313,7 +313,7 @@ Verify port `8083` is not already used by another service on your server.
 ### Resetting Admin Password
 Log into the server and run:
 ```bash
-docker exec -it telegram-channel-cloner python3 -c "
+docker exec -it tg-channel-cloner python3 -c "
 import asyncio
 from backend.app.database import AsyncSessionLocal
 from backend.app.models import User
@@ -347,7 +347,7 @@ asyncio.run(reset())
 
 Created and maintained by **Farzad (MusicOverdose)**
 - GitHub: [@MusicOverdose](https://github.com/MusicOverdose)
-- Repository: [MusicOverdose/telegram-channel-cloner](https://github.com/MusicOverdose/telegram-channel-cloner)
+- Repository: [MusicOverdose/tg-channel-cloner](https://github.com/MusicOverdose/tg-channel-cloner)
 
 ---
 
